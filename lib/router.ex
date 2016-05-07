@@ -36,7 +36,6 @@ defmodule PlugExample.Router do
   #   conn.private[:protected]
   #
   get "/", private: %{protected: false} do
-    IO.puts "index"
     conn |> send_resp(200, "Hello world")
   end
 
@@ -44,6 +43,12 @@ defmodule PlugExample.Router do
     conn |> send_resp(200, "LOL")
   end
 
+  # Forward request to another router.
+  #
+  # Note that the plugs defined here are executed before the request is
+  # forwarded. This means, for example, that the Logger and CSRFProtection
+  # plugs must only be defined in lib/router.ex, otherwise the plugs are
+  # executed twice.
   forward "/about", to: PlugExample.About
 
   #

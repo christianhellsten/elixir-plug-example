@@ -10,8 +10,6 @@ defmodule PlugExample.About do
   # https://hexdocs.pm/plug/Plug.Conn.html
   #
   import Plug.Conn
-  # Logs request to STDOUT
-  plug Plug.Logger
   # Matches request to a route
   plug :match
   # Dispatches request to a route
@@ -24,7 +22,6 @@ defmodule PlugExample.About do
   #   conn.private[:protected]
   #
   get "/", private: %{protected: false} do
-    IO.puts "about"
     conn |> send_resp(200, "Noooo")
   end
 end
