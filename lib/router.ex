@@ -26,6 +26,10 @@ defmodule PlugExample.Router do
   def start_link do
     # Cowboy adapter:
     # https://hexdocs.pm/plug/Plug.Adapters.Cowboy.html
+    #
+    # Cowboy is a small, fast and modular HTTP server written in Erlang:
+    # https://github.com/ninenines/cowboy
+    #
     {:ok, _} = Plug.Adapters.Cowboy.http PlugExample.Router, []
   end
 
